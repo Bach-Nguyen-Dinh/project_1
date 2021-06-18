@@ -40,7 +40,6 @@ const char caCert[] PROGMEM = R"EOF(
 
 const uint8_t serverCertFingerprint[] = {0x04,0x6F,0xDA,0x31,0xFD,0xD0,0xA3,0x24,0x1F,0x88,0x91,0xE5,0x4A,0x4A,0x10,0xA5,0xB2,0xDC,0x8C,0x6E};
 
-
 X509List caCertX509(caCert);
 WiFiClientSecure espClient;
 PubSubClient client(espClient);
@@ -81,13 +80,11 @@ void loop() {
 
   Serial.print("Temperature: ");
   Serial.println(t);
-  //publish du lieu nhiet do len topic
-  client.publish("testtopic/dht/temperature", String(t).c_str());
+  client.publish("testtopic/dht/temperature", String(t).c_str()); //publish du lieu nhiet do len topic
 
   Serial.print("Humidity: ");
   Serial.println(h);
-  //publish du lieu do am len topic
-  client.publish("testtopic/dht/humidity", String(h).c_str());
+  client.publish("testtopic/dht/humidity", String(h).c_str()); //publish du lieu do am len topic
 
   Serial.println();
 
